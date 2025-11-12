@@ -1,5 +1,6 @@
 import json
 from src.get_news import NewsAPI
+from src.data_manager import DBManager
 from src.configs import API_TOKEN, THE_NEWS_API_TOP_STORIES
 
 if __name__ == "__main__":
@@ -10,4 +11,9 @@ if __name__ == "__main__":
     html = news_api.get_html_news(url)
     texto = NewsAPI.get_article_text(url)
 
-    print(texto)
+    DBManager.db(
+        db="news",
+        table="news",
+        coluns=["titulo", "url", "texto"],
+        data=[(title, url, texto)]
+    )

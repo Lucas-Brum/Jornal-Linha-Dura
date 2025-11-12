@@ -6,3 +6,6 @@ venv/
 
 # Secrets
 secrets/*
+
+#data
+*.sqlite
